@@ -1,16 +1,10 @@
 'use client';
 
-import { useState, useEffect } from 'react';
 import { useScroll, useTransform, motion } from 'framer-motion';
 import Image from 'next/image';
 
 export default function ParallaxDonuts() {
-  const [mounted, setMounted] = useState(false);
   const { scrollY } = useScroll();
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   const y1 = useTransform(scrollY, [0, 1000], [0, -200]);
   const y2 = useTransform(scrollY, [0, 1000], [0, -100]);
@@ -58,38 +52,6 @@ export default function ParallaxDonuts() {
           </div>
         </div>
       </motion.div>
-
-      {/* Sprinkles — рендер только на клиенте (window доступен) */}
-      {mounted && (
-      <div className="sprinkles">
-        {[...Array(20)].map((_, i) => (
-          <motion.div
-            key={i}
-            initial={{
-              x: Math.random() * window.innerWidth,
-              y: Math.random() * window.innerHeight,
-              rotate: Math.random() * 360,
-            }}
-            animate={{
-              y: [0, -30, 0],
-              rotate: [0, 360],
-            }}
-            transition={{
-              duration: 5 + Math.random() * 5,
-              repeat: Infinity,
-              delay: Math.random() * 2,
-            }}
-            className="absolute w-2 h-6 rounded-full"
-            style={{
-              background: ['#FFB4D6', '#E77597', '#FFCDB2', '#8B5E3C'][
-                Math.floor(Math.random() * 4)
-              ],
-              opacity: 0.3,
-            }}
-          />
-        ))}
-      </div>
-      )}
     </div>
   );
 }

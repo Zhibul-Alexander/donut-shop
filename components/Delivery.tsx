@@ -63,12 +63,17 @@ export default function Delivery() {
                 <motion.a
                   key={option.name}
                   href={option.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                  whileHover={{ scale: 1.02, x: 5 }}
-                  className={`glass-card p-6 rounded-2xl flex items-center gap-4 cursor-pointer hover:shadow-xl transition-all`}
+                  transition={{ duration: 0.35, ease: 'easeOut' }}
+                  whileHover={{
+                    scale: 1.05,
+                    transition: { type: 'tween', duration: 0.12, ease: 'easeOut', delay: 0 },
+                  }}
+                  className="glass-card p-6 rounded-2xl flex items-center gap-4 cursor-pointer"
                 >
                   <div className={`w-16 h-16 bg-gradient-to-br ${option.color} rounded-2xl flex items-center justify-center text-3xl shadow-lg`}>
                     {option.icon}
@@ -86,25 +91,25 @@ export default function Delivery() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.4 }}
-              className="glass-card p-6 rounded-2xl"
+              transition={{ duration: 0.4 }}
+              whileHover={{
+                scale: 1.05,
+                transition: { type: 'tween', duration: 0.12, delay: 0, ease: 'easeOut' },
+              }}
+              className="glass-card p-6 rounded-2xl flex items-center gap-4 cursor-pointer"
+              onClick={() => {
+                document.getElementById('contacts')?.scrollIntoView({ behavior: 'smooth' });
+              }}
             >
-              <h4 className="text-xl font-bold text-gray-800 mb-4">{t(i18n.delivery.pickupTitle, locale)}</h4>
-              <p className="text-gray-600 mb-4">
-                {t(i18n.delivery.pickupText, locale)}
-              </p>
-              <motion.a
-                href="#contacts"
-                onClick={(e) => {
-                  e.preventDefault();
-                  document.getElementById('contacts')?.scrollIntoView({ behavior: 'smooth' });
-                }}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="w-full block text-center bg-gradient-to-r from-donut-berry to-donut-pink text-white py-3 rounded-full font-semibold"
-              >
-                {t(i18n.delivery.pickupBtn, locale)}
-              </motion.a>
+              <div className="w-16 h-16 bg-gradient-to-br from-donut-berry to-donut-pink rounded-2xl flex items-center justify-center shadow-lg">
+                <MapPin className="text-white" size={28} />
+              </div>
+              <div className="flex-1">
+                <h4 className="text-xl font-bold text-gray-800">
+                  {t(i18n.delivery.pickupTitle, locale)}
+                </h4>
+              </div>
+              <div className="text-2xl text-gray-400">→</div>
             </motion.div>
           </motion.div>
 
@@ -122,8 +127,11 @@ export default function Delivery() {
                   initial={{ opacity: 0, scale: 0.8 }}
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                  whileHover={{ scale: 1.05 }}
+                  transition={{ duration: 0.4 }}
+                  whileHover={{
+                    scale: 1.05,
+                    transition: { type: 'tween', duration: 0.12, delay: 0, ease: 'easeOut' },
+                  }}
                   className="glass-card p-6 rounded-2xl"
                 >
                   <div className="w-12 h-12 bg-gradient-to-br from-donut-berry to-donut-pink rounded-xl flex items-center justify-center mb-4">

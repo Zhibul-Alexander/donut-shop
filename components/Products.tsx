@@ -84,7 +84,12 @@ export default function Products() {
             <motion.div
               key={donut.id}
               variants={item}
-              whileHover={{ y: -10, scale: 1.02 }}
+              // Ховер — сразу, без задержки (отдельный transition от анимации появления)
+              whileHover={{
+                y: -10,
+                scale: 1.02,
+                transition: { duration: 0.2, delay: 0 },
+              }}
               className="glass-card rounded-3xl overflow-hidden group cursor-pointer"
             >
               <div className="relative h-64 bg-gradient-to-br from-donut-cream to-donut-peach overflow-hidden">
@@ -129,10 +134,13 @@ export default function Products() {
                 </div>
 
                 <motion.button
-                  whileHover={{ scale: 1.05 }}
+                  whileHover={{
+                    scale: 1.05,
+                    transition: { type: 'tween', duration: 0.12, delay: 0, ease: 'easeOut' },
+                  }}
                   whileTap={{ scale: 0.95 }}
                   onClick={() => scrollToSection('delivery')}
-                  className="w-full bg-gradient-to-r from-donut-berry to-donut-pink text-white py-3 rounded-full font-semibold flex items-center justify-center gap-2 shadow-lg hover:shadow-xl transition-shadow"
+                  className="w-full bg-gradient-to-r from-donut-berry to-donut-pink text-white py-3 rounded-full font-semibold flex items-center justify-center gap-2 shadow-lg"
                 >
                   <ShoppingCart size={20} />
                   {t(i18n.products.orderBtn, locale)}

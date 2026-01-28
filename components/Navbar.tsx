@@ -36,6 +36,11 @@ export default function Navbar() {
     setIsOpen(false);
   };
 
+  const handleLocaleClick = (loc: Locale) => {
+    setLocale(loc);
+    setIsOpen(false);
+  };
+
   return (
     <motion.nav
       initial={{ y: -100 }}
@@ -62,15 +67,17 @@ export default function Navbar() {
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-6">
             {navItemKeys.map((item) => (
-              <motion.button
+              <motion.a
                 key={item.id}
-                whileHover={{ scale: 1.1 }}
+                whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
+                transition={{ type: 'tween', duration: 0.12, delay: 0, ease: 'easeOut' }}
+                href={`#${item.id}`}
                 onClick={() => handleNavClick(item.id)}
                 className="text-gray-800 hover:text-donut-berry transition-colors font-medium"
               >
                 {t(i18n.nav[item.key], locale)}
-              </motion.button>
+              </motion.a>
             ))}
             {isClient && (
               <div className="flex items-center gap-1 glass-card px-2 py-1 rounded-full">
@@ -80,7 +87,8 @@ export default function Navbar() {
                     key={loc}
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    onClick={() => setLocale(loc)}
+                    transition={{ type: 'tween', duration: 0.12, delay: 0, ease: 'easeOut' }}
+                    onClick={() => handleLocaleClick(loc)}
                     className={`px-2 py-1 rounded-md text-sm font-medium transition-colors ${
                       locale === loc
                         ? 'bg-gradient-to-r from-donut-berry to-donut-pink text-white'
@@ -95,8 +103,9 @@ export default function Navbar() {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
+              transition={{ type: 'tween', duration: 0.12, delay: 0, ease: 'easeOut' }}
               onClick={() => handleNavClick('delivery')}
-              className="bg-gradient-to-r from-donut-berry to-donut-pink text-white px-6 py-2 rounded-full font-semibold shadow-lg hover:shadow-xl transition-shadow"
+              className="bg-gradient-to-r from-donut-berry to-donut-pink text-white px-6 py-2 rounded-full font-semibold shadow-lg"
             >
               {t(i18n.nav.orderNow, locale)}
             </motion.button>
@@ -104,7 +113,9 @@ export default function Navbar() {
 
           {/* Mobile Menu Button */}
           <motion.button
+            whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.9 }}
+            transition={{ type: 'tween', duration: 0.12, delay: 0, ease: 'easeOut' }}
             onClick={() => setIsOpen(!isOpen)}
             className="md:hidden p-2 rounded-lg glass-card"
             aria-label="Toggle menu"
@@ -126,16 +137,19 @@ export default function Navbar() {
           >
             <div className="px-4 py-6 space-y-4">
               {navItemKeys.map((item, index) => (
-                <motion.button
+                <motion.a
                   key={item.id}
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: index * 0.1 }}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.96 }}
+                  href={`#${item.id}`}
                   onClick={() => handleNavClick(item.id)}
                   className="block w-full text-left text-gray-800 hover:text-donut-berry transition-colors font-medium py-2"
                 >
                   {t(i18n.nav[item.key], locale)}
-                </motion.button>
+                </motion.a>
               ))}
               {isClient && (
                 <motion.div
@@ -147,8 +161,10 @@ export default function Navbar() {
                   {locales.map((loc) => (
                     <motion.button
                       key={loc}
+                      whileHover={{ scale: 1.03 }}
                       whileTap={{ scale: 0.95 }}
-                      onClick={() => setLocale(loc)}
+                      transition={{ type: 'tween', duration: 0.12, delay: 0, ease: 'easeOut' }}
+                      onClick={() => handleLocaleClick(loc)}
                       className={`flex-1 py-2 rounded-full text-sm font-medium ${
                         locale === loc
                           ? 'bg-gradient-to-r from-donut-berry to-donut-pink text-white'
@@ -164,6 +180,8 @@ export default function Navbar() {
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: (navItemKeys.length + 1) * 0.1 }}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
                 onClick={() => handleNavClick('delivery')}
                 className="w-full bg-gradient-to-r from-donut-berry to-donut-pink text-white px-6 py-3 rounded-full font-semibold shadow-lg"
               >

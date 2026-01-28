@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import { ArrowDown } from 'lucide-react';
 import { scrollToSection } from '@/utils/scroll';
 import { useLocale, t } from '@/hooks/useLocale';
@@ -18,8 +19,8 @@ export default function Hero() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-center lg:text-left"
-          >
-            <motion.div
+            >
+              <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
@@ -48,17 +49,21 @@ export default function Hero() {
               {t(i18n.hero.subtitle, locale)}
             </motion.p>
 
-            <motion.div
+              <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 1 }}
               className="flex justify-center lg:justify-start"
             >
               <motion.button
-                whileHover={{ scale: 1.05, boxShadow: '0 20px 40px rgba(231, 117, 151, 0.4)' }}
+                whileHover={{
+                  scale: 1.05,
+                  boxShadow: '0 20px 40px rgba(231, 117, 151, 0.4)',
+                  transition: { type: 'tween', duration: 0.12, delay: 0, ease: 'easeOut' },
+                }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => scrollToSection('delivery')}
-                className="bg-gradient-to-r from-donut-berry to-donut-pink text-white px-8 py-4 rounded-full font-semibold text-lg shadow-xl transition-all"
+                className="bg-gradient-to-r from-donut-berry to-donut-pink text-white px-8 py-4 rounded-full font-semibold text-lg shadow-xl"
               >
                 {t(i18n.hero.cta, locale)}
               </motion.button>
@@ -76,10 +81,15 @@ export default function Hero() {
                 { value: t(i18n.hero.stats.delivery, locale), label: t(i18n.nav.delivery, locale) },
                 { value: '5+', label: t(i18n.hero.stats.flavors, locale) },
               ].map((stat, index) => (
-                <div key={index} className="text-center glass-card p-4 rounded-2xl">
+                <motion.div
+                  key={index}
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ type: 'tween', duration: 0.12, delay: 0, ease: 'easeOut' }}
+                  className="text-center glass-card p-4 rounded-2xl"
+                >
                   <div className="text-2xl font-bold text-donut-berry">{stat.value}</div>
                   <div className="text-sm text-gray-600">{stat.label}</div>
-                </div>
+                </motion.div>
               ))}
             </motion.div>
           </motion.div>
@@ -91,7 +101,7 @@ export default function Hero() {
             transition={{ duration: 1, delay: 0.4 }}
             className="relative flex items-center justify-center"
           >
-            <motion.div
+              <motion.div
               animate={{
                 y: [0, -20, 0],
                 rotate: [0, 5, -5, 0],
@@ -101,39 +111,22 @@ export default function Hero() {
                 repeat: Infinity,
                 ease: 'easeInOut',
               }}
-              className="relative w-72 h-72 md:w-96 md:h-96 lg:w-[500px] lg:h-[500px]"
+              className="relative w-54 h-54 md:w-72 md:h-72 lg:w-[375px] lg:h-[375px]"
             >
-              {/* Main donut - using CSS instead of image for demo */}
+              {/* Main donut - image from /public/rotate.webp */}
               <div className="relative w-full h-full">
                 <motion.div
-                  animate={{ rotate: 360 }}
-                  transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
-                  className="absolute inset-0 rounded-full bg-gradient-to-br from-donut-pink via-donut-berry to-donut-chocolate shadow-2xl"
-                  style={{
-                    filter: 'drop-shadow(0 25px 50px rgba(231, 117, 151, 0.5))',
-                  }}
+                  animate={{ rotate: [-8, 8, -8] }}
+                  transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+                  className="absolute inset-0"
                 >
-                  {/* Donut hole */}
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="w-1/3 h-1/3 rounded-full bg-gradient-to-br from-donut-cream to-donut-peach" />
-                  </div>
-                  
-                  {/* Sprinkles on donut */}
-                  {[...Array(12)].map((_, i) => (
-                    <motion.div
-                      key={i}
-                      initial={{ scale: 0 }}
-                      animate={{ scale: 1 }}
-                      transition={{ delay: 1 + i * 0.1 }}
-                      className="absolute w-3 h-8 rounded-full"
-                      style={{
-                        background: ['#fff', '#E77597', '#8B5E3C', '#FFCDB2'][i % 4],
-                        top: `${20 + (i % 3) * 25}%`,
-                        left: `${15 + (i % 4) * 20}%`,
-                        transform: `rotate(${i * 30}deg)`,
-                      }}
-                    />
-                  ))}
+                  <Image
+                    src="/rotate.webp"
+                    alt="Donut Dreams"
+                    fill
+                    priority
+                    className="object-contain"
+                  />
                 </motion.div>
               </div>
 

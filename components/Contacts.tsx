@@ -60,8 +60,14 @@ export default function Contacts() {
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
+                // Задержка только на появление карточки
                 transition={{ delay: index * 0.1 }}
-                whileHover={{ scale: 1.02, x: 5 }}
+                // Ховер — сразу, без задержки
+                whileHover={{
+                  scale: 1.02,
+                  x: 5,
+                  transition: { duration: 0.2, delay: 0 },
+                }}
                 className="glass-card p-6 rounded-2xl flex items-start gap-4"
               >
                 <div className="w-12 h-12 bg-gradient-to-br from-donut-berry to-donut-pink rounded-xl flex items-center justify-center flex-shrink-0">
@@ -88,7 +94,11 @@ export default function Contacts() {
                   <motion.a
                     key={index}
                     href={social.url}
-                    whileHover={{ scale: 1.1, rotate: 5 }}
+                    whileHover={{
+                      scale: 1.1,
+                      rotate: 5,
+                      transition: { duration: 0.2, delay: 0 },
+                    }}
                     whileTap={{ scale: 0.95 }}
                     className={`w-14 h-14 bg-gradient-to-br ${social.color} rounded-xl flex items-center justify-center text-white shadow-lg hover:shadow-xl transition-shadow`}
                   >
@@ -118,7 +128,10 @@ export default function Contacts() {
                 href={contacts.whatsapp}
                 target="_blank"
                 rel="noopener noreferrer"
-                whileHover={{ scale: 1.05 }}
+                whileHover={{
+                  scale: 1.05,
+                  transition: { duration: 0.2, delay: 0 },
+                }}
                 whileTap={{ scale: 0.95 }}
                 className="block w-full text-center bg-gradient-to-r from-donut-berry to-donut-pink text-white py-3 rounded-full font-semibold shadow-lg"
               >

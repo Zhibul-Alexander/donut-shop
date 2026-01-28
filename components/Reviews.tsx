@@ -61,7 +61,12 @@ export default function Reviews() {
             <motion.div
               key={review.id}
               variants={item}
-              whileHover={{ y: -10, scale: 1.02 }}
+              // Ховер — сразу, без задержки (отдельный transition от анимации появления)
+              whileHover={{
+                y: -10,
+                scale: 1.02,
+                transition: { duration: 0.2, delay: 0 },
+              }}
               className="glass-card p-6 rounded-3xl relative"
             >
               <Quote className="absolute top-4 right-4 text-donut-pink opacity-20" size={48} />

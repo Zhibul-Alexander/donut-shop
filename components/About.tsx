@@ -56,16 +56,25 @@ export default function About() {
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: 0.4 + index * 0.1 }}
-                  className="glass-card p-6 rounded-2xl flex items-start gap-4 hover:scale-105 transition-transform"
+                  transition={{ duration: 0.4, ease: 'easeOut' }}
                 >
-                  <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-donut-berry to-donut-pink rounded-xl flex items-center justify-center">
-                    <feature.icon className="text-white" size={24} />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold text-gray-800 mb-2">{t(i18n.about.features[feature.key].title, locale)}</h3>
-                    <p className="text-gray-600">{t(i18n.about.features[feature.key].description, locale)}</p>
-                  </div>
+                  <motion.div
+                    whileHover={{ scale: 1.05 }}
+                    transition={{ type: 'tween', duration: 0.12, delay: 0, ease: 'easeOut' }}
+                    className="glass-card p-6 rounded-2xl flex items-start gap-4"
+                  >
+                    <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-donut-berry to-donut-pink rounded-xl flex items-center justify-center">
+                      <feature.icon className="text-white" size={24} />
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-bold text-gray-800 mb-2">
+                        {t(i18n.about.features[feature.key].title, locale)}
+                      </h3>
+                      <p className="text-gray-600">
+                        {t(i18n.about.features[feature.key].description, locale)}
+                      </p>
+                    </div>
+                  </motion.div>
                 </motion.div>
               ))}
             </motion.div>
@@ -81,22 +90,33 @@ export default function About() {
           >
             {/* Stats Cards */}
             <div className="grid grid-cols-2 gap-6 shrink-0">
-              {[
+                {[
                 { valueKey: 'customersValue' as const, labelKey: 'customersLabel' as const },
                 { valueKey: 'years' as const, labelKey: 'yearsLabel' as const },
                 { valueKey: 'flavorsValue' as const, labelKey: 'flavorsLabel' as const },
                 { valueKey: 'naturalValue' as const, labelKey: 'naturalLabel' as const },
-              ].map((stat, index) => (
+                ].map((stat, index) => (
                 <motion.div
                   key={index}
                   initial={{ opacity: 0, scale: 0.8 }}
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
-                  transition={{ delay: 0.5 + index * 0.1 }}
-                  className="glass-card p-6 rounded-2xl text-center"
+                  transition={{ delay: 0.5 + index * 0.1, duration: 0.4, ease: 'easeOut' }}
                 >
-                  <div className="text-3xl font-bold text-donut-berry mb-2">{t(i18n.about.stats[stat.valueKey], locale)}</div>
-                  {stat.labelKey && <div className="text-sm text-gray-600">{t(i18n.about.stats[stat.labelKey], locale)}</div>}
+                  <motion.div
+                    whileHover={{ scale: 1.05 }}
+                    transition={{ type: 'tween', duration: 0.12, delay: 0, ease: 'easeOut' }}
+                    className="glass-card p-6 rounded-2xl text-center"
+                  >
+                    <div className="text-3xl font-bold text-donut-berry mb-2">
+                      {t(i18n.about.stats[stat.valueKey], locale)}
+                    </div>
+                    {stat.labelKey && (
+                      <div className="text-sm text-gray-600">
+                        {t(i18n.about.stats[stat.labelKey], locale)}
+                      </div>
+                    )}
+                  </motion.div>
                 </motion.div>
               ))}
             </div>
@@ -106,17 +126,23 @@ export default function About() {
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.7 }}
-              className="glass-card rounded-3xl overflow-hidden flex-1 min-h-0 relative"
+              transition={{ duration: 0.5, ease: 'easeOut' }}
+              className="flex-1 min-h-0"
             >
-              <Image
-                src="/logo.webp"
-                alt="Donut Dreams — наш магазин"
-                fill
-                className="object-cover"
-                sizes="(max-width: 1024px) 100vw, 50vw"
-                priority={false}
-              />
+              <motion.div
+                whileHover={{ scale: 1.03 }}
+                transition={{ type: 'tween', duration: 0.12, delay: 0, ease: 'easeOut' }}
+                className="glass-card rounded-3xl overflow-hidden relative h-full"
+              >
+                <Image
+                  src="/logo.webp"
+                  alt="Donut Dreams — наш магазин"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  priority={false}
+                />
+              </motion.div>
             </motion.div>
           </motion.div>
         </div>
