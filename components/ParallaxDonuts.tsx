@@ -1,57 +1,108 @@
 'use client';
 
-import { useScroll, useTransform, motion } from 'framer-motion';
-import Image from 'next/image';
+import { motion } from 'framer-motion';
+
+/*
+ * Позиции по горизонтали: сетка с шагом ~14%, чтобы пончики не накладывались.
+ * Размер пончика макс ~8% ширины экрана — зазоры достаточные.
+ */
+const LEFT_SLOTS = ['4%', '18%', '32%', '46%', '60%', '74%', '88%'] as const;
+
+/* Детерминированный «рандом»: индексы слотов и задержки перемешаны для визуально случайного вида */
+const SLOT_ORDER = [0, 4, 1, 5, 2, 6, 3, 0, 4, 1, 5, 2, 4, 6];
+const DELAYS = [0, 2.2, 4.5, 1, 3.8, 5.5, 0.5, 2.8, 4, 1.5, 3.2, 5, 2, 6];
+/* Длительности на 30% больше (скорость падения на 30% ниже) */
+const DURATIONS = [9.1, 9.75, 11.4, 8.2, 10.7, 12.2, 9.5, 10.1, 11.7, 8.5, 11, 12.7, 10, 11.2];
+
+/* drift в px: 0 = прямо вниз, ненулевой = падение под углом. rotate = градусы за один проход (вращение при падении). */
+const FALLING_DONUTS = [
+  { size: 'w-16 h-16 md:w-22 md:h-22', rotate: 720, drift: 0 },
+  { size: 'w-14 h-14 md:w-20 md:h-20', rotate: -900, drift: -70 },
+  { size: 'w-20 h-20 md:w-28 md:h-28', rotate: 540, drift: 55 },
+  { size: 'w-12 h-12 md:w-18 md:h-18', rotate: -720, drift: -85 },
+  { size: 'w-18 h-18 md:w-24 md:h-24', rotate: 1080, drift: 0 },
+  { size: 'w-16 h-16 md:w-22 md:h-22', rotate: -630, drift: -45 },
+  { size: 'w-14 h-14 md:w-20 md:h-20', rotate: 810, drift: 65 },
+  { size: 'w-20 h-20 md:w-26 md:h-26', rotate: -540, drift: -90 },
+  { size: 'w-16 h-16 md:w-22 md:h-22', rotate: 720, drift: 50 },
+  { size: 'w-18 h-18 md:w-24 md:h-24', rotate: -1080, drift: 0 },
+  { size: 'w-14 h-14 md:w-20 md:h-20', rotate: 630, drift: -60 },
+  { size: 'w-16 h-16 md:w-22 md:h-22', rotate: -720, drift: 75 },
+  { size: 'w-10 h-10 md:w-14 md:h-14', rotate: 540, drift: -40 },
+  { size: 'w-22 h-22 md:w-30 md:h-30', rotate: -810, drift: 60 },
+] as const;
+
+const GRADIENTS = [
+  'from-donut-sand to-donut-chocolate',
+  'from-donut-chocolate to-donut-peach',
+  'from-donut-chocolate to-donut-sand',
+  'from-donut-sand to-donut-peach',
+] as const;
+
+function DonutRing({ gradient, sizeClass }: { gradient: string; sizeClass: string }) {
+  return (
+    <div className={`relative ${sizeClass} shrink-0`}>
+      <div className={`w-full h-full rounded-full bg-gradient-to-br ${gradient} opacity-60`} />
+      <div className="absolute inset-0 flex items-center justify-center">
+        <div className="w-[32%] h-[32%] min-w-4 min-h-4 rounded-full bg-donut-cream" />
+      </div>
+    </div>
+  );
+}
+
+/*
+ * Пончики входят сверху и уходят вниз: старт чуть выше экрана, конец чуть ниже.
+ * Сброс цикла (прыжок обратно наверх) происходит за границами экрана, поэтому
+ * в середине экрана пончики не меняются и не телепортируются.
+ */
+const Y_START = '-12vh';
+const Y_END = '112vh';
 
 export default function ParallaxDonuts() {
-  const { scrollY } = useScroll();
-
-  const y1 = useTransform(scrollY, [0, 1000], [0, -200]);
-  const y2 = useTransform(scrollY, [0, 1000], [0, -100]);
-  const y3 = useTransform(scrollY, [0, 1000], [0, -300]);
-  const rotate1 = useTransform(scrollY, [0, 1000], [0, 360]);
-  const rotate2 = useTransform(scrollY, [0, 1000], [0, -360]);
-
   return (
     <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
-      {/* Donut 1 - Top Right */}
-      <motion.div
-        style={{ y: y1, rotate: rotate1 }}
-        className="absolute top-20 right-10 opacity-20 blur-sm"
-      >
-        <div className="relative w-32 h-32 md:w-48 md:h-48 animate-spin-slow">
-          <div className="w-full h-full rounded-full bg-gradient-to-br from-donut-sand to-donut-chocolate opacity-50" />
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div className="w-12 h-12 md:w-20 md:h-20 rounded-full bg-donut-cream" />
-          </div>
-        </div>
-      </motion.div>
-
-      {/* Donut 2 - Middle Left */}
-      <motion.div
-        style={{ y: y2, rotate: rotate2 }}
-        className="absolute top-1/3 left-5 opacity-15 blur-sm"
-      >
-        <div className="relative w-40 h-40 md:w-56 md:h-56 animate-spin-slower">
-          <div className="w-full h-full rounded-full bg-gradient-to-br from-donut-chocolate to-donut-peach opacity-50" />
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div className="w-16 h-16 md:w-24 md:h-24 rounded-full bg-donut-cream" />
-          </div>
-        </div>
-      </motion.div>
-
-      {/* Donut 3 - Bottom Right */}
-      <motion.div
-        style={{ y: y3, rotate: rotate1 }}
-        className="absolute bottom-40 right-20 opacity-10 blur-sm"
-      >
-        <div className="relative w-36 h-36 md:w-52 md:h-52 animate-spin-slow">
-          <div className="w-full h-full rounded-full bg-gradient-to-br from-donut-chocolate to-donut-sand opacity-50" />
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div className="w-14 h-14 md:w-22 md:h-22 rounded-full bg-donut-cream" />
-          </div>
-        </div>
-      </motion.div>
+      {FALLING_DONUTS.map((donut, i) => (
+        <motion.div
+          key={i}
+          className="absolute top-0 left-0 opacity-[0.18] blur-[2px] will-change-transform"
+          style={{ left: LEFT_SLOTS[SLOT_ORDER[i] % LEFT_SLOTS.length] }}
+          initial={{
+            y: Y_START,
+            x: 0,
+            rotate: 0,
+          }}
+          animate={{
+            y: Y_END,
+            x: donut.drift,
+            rotate: donut.rotate,
+          }}
+          transition={{
+            y: {
+              duration: DURATIONS[i],
+              repeat: Infinity,
+              repeatType: 'loop',
+              ease: 'linear',
+            },
+            x: {
+              duration: DURATIONS[i],
+              repeat: Infinity,
+              repeatType: 'loop',
+              ease: 'linear',
+            },
+            rotate: {
+              duration: DURATIONS[i],
+              repeat: Infinity,
+              ease: 'linear',
+            },
+            delay: DELAYS[i],
+          }}
+        >
+          <DonutRing
+            gradient={GRADIENTS[i % GRADIENTS.length]}
+            sizeClass={donut.size}
+          />
+        </motion.div>
+      ))}
     </div>
   );
 }
