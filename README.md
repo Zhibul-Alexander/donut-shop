@@ -264,11 +264,11 @@ export const i18n = {
 `tailwind.config.ts`:
 ```typescript
 colors: {
-  cream: '#FFF5E1',
-  peach: '#FFCDB2',
-  'rose-gold': '#B76E79',
-  chocolate: '#8B5E3C',
-  'soft-pink': '#FFB4D6',
+  'donut-cream': '#F7F2EB',
+  'donut-peach': '#E8DCC8',
+  'donut-sand': '#D4C4B0',
+  'donut-chocolate': '#5C4033',
+  'donut-berry': '#7D6B4A',
 }
 ```
 

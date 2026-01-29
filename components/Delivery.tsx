@@ -39,7 +39,7 @@ export default function Delivery() {
           >
             <span className="text-6xl">🚚</span>
           </motion.div>
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-donut-berry to-donut-chocolate bg-clip-text text-transparent">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-donut-chocolate">
             {t(i18n.delivery.title, locale)}
           </h2>
           <p className="text-xl text-gray-700 max-w-2xl mx-auto">
@@ -101,7 +101,7 @@ export default function Delivery() {
                 document.getElementById('contacts')?.scrollIntoView({ behavior: 'smooth' });
               }}
             >
-              <div className="w-16 h-16 bg-gradient-to-br from-donut-berry to-donut-pink rounded-2xl flex items-center justify-center shadow-lg">
+              <div className="w-16 h-16 bg-donut-chocolate rounded-2xl flex items-center justify-center shadow-lg">
                 <MapPin className="text-white" size={28} />
               </div>
               <div className="flex-1">
@@ -134,7 +134,7 @@ export default function Delivery() {
                   }}
                   className="glass-card p-6 rounded-2xl"
                 >
-                  <div className="w-12 h-12 bg-gradient-to-br from-donut-berry to-donut-pink rounded-xl flex items-center justify-center mb-4">
+                  <div className="w-12 h-12 bg-donut-chocolate rounded-xl flex items-center justify-center mb-4">
                     <feature.icon className="text-white" size={24} />
                   </div>
                   <h4 className="text-lg font-bold text-gray-800 mb-2">{t(i18n.delivery.features[feature.key].title, locale)}</h4>

@@ -26,7 +26,7 @@ export default function Hero() {
               transition={{ duration: 0.6, delay: 0.4 }}
               className="inline-block mb-4 px-4 py-2 glass-card rounded-full"
             >
-              <span className="text-donut-berry font-semibold">{t(i18n.hero.badge, locale)}</span>
+              <span className="text-donut-chocolate font-semibold">{t(i18n.hero.badge, locale)}</span>
             </motion.div>
 
             <motion.h1
@@ -35,7 +35,7 @@ export default function Hero() {
               transition={{ duration: 0.6, delay: 0.6 }}
               className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight"
             >
-              <span className="bg-gradient-to-r from-donut-berry via-donut-pink to-donut-chocolate bg-clip-text text-transparent">
+              <span className="text-donut-chocolate">
                 Donut Dreams
               </span>
             </motion.h1>
@@ -58,12 +58,12 @@ export default function Hero() {
               <motion.button
                 whileHover={{
                   scale: 1.05,
-                  boxShadow: '0 20px 40px rgba(231, 117, 151, 0.4)',
+                  boxShadow: '0 20px 40px rgba(125, 107, 74, 0.3)',
                   transition: { type: 'tween', duration: 0.12, delay: 0, ease: 'easeOut' },
                 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => scrollToSection('delivery')}
-                className="bg-gradient-to-r from-donut-berry to-donut-pink text-white px-8 py-4 rounded-full font-semibold text-lg shadow-xl"
+                className="bg-donut-chocolate text-white px-8 py-4 rounded-full font-semibold text-lg shadow-xl hover:bg-donut-chocolate/90 transition-all"
               >
                 {t(i18n.hero.cta, locale)}
               </motion.button>
@@ -87,7 +87,7 @@ export default function Hero() {
                   transition={{ type: 'tween', duration: 0.12, delay: 0, ease: 'easeOut' }}
                   className="text-center glass-card p-4 rounded-2xl"
                 >
-                  <div className="text-2xl font-bold text-donut-berry">{stat.value}</div>
+                  <div className="text-2xl font-bold text-donut-chocolate">{stat.value}</div>
                   <div className="text-sm text-gray-600">{stat.label}</div>
                 </motion.div>
               ))}
@@ -131,7 +131,7 @@ export default function Hero() {
               </div>
 
               {/* Glow effect */}
-              <div className="absolute inset-0 rounded-full bg-gradient-to-r from-donut-berry to-donut-pink opacity-30 blur-3xl animate-pulse" />
+              <div className="absolute inset-0 rounded-full bg-donut-chocolate opacity-25 blur-3xl animate-pulse" />
             </motion.div>
           </motion.div>
         </div>
@@ -145,7 +145,7 @@ export default function Hero() {
         className="absolute bottom-10 left-1/2 transform -translate-x-1/2 cursor-pointer"
         onClick={() => scrollToSection('products')}
       >
-        <ArrowDown size={32} className="text-donut-berry" />
+        <ArrowDown size={32} className="text-donut-chocolate" />
       </motion.div>
     </section>
   );

@@ -34,7 +34,7 @@ export default function About() {
               <span className="text-6xl">✨</span>
             </motion.div>
 
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-donut-berry to-donut-chocolate bg-clip-text text-transparent">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-donut-chocolate">
               {t(i18n.about.title, locale)}
             </h2>
 
@@ -63,7 +63,7 @@ export default function About() {
                     transition={{ type: 'tween', duration: 0.12, delay: 0, ease: 'easeOut' }}
                     className="glass-card p-6 rounded-2xl flex items-start gap-4"
                   >
-                    <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-donut-berry to-donut-pink rounded-xl flex items-center justify-center">
+                    <div className="flex-shrink-0 w-12 h-12 bg-donut-chocolate rounded-xl flex items-center justify-center">
                       <feature.icon className="text-white" size={24} />
                     </div>
                     <div>
@@ -108,7 +108,7 @@ export default function About() {
                     transition={{ type: 'tween', duration: 0.12, delay: 0, ease: 'easeOut' }}
                     className="glass-card p-6 rounded-2xl text-center"
                   >
-                    <div className="text-3xl font-bold text-donut-berry mb-2">
+                    <div className="text-3xl font-bold text-donut-chocolate mb-2">
                       {t(i18n.about.stats[stat.valueKey], locale)}
                     </div>
                     {stat.labelKey && (

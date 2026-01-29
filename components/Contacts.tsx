@@ -6,7 +6,7 @@ import { contacts, i18n } from '@/site.config';
 import { useLocale, t } from '@/hooks/useLocale';
 
 const socialLinks = [
-  { name: 'Instagram', icon: Instagram, url: contacts.social.instagram, color: 'from-purple-500 to-pink-500' },
+  { name: 'Instagram', icon: Instagram, url: contacts.social.instagram, color: 'from-amber-700 to-amber-500' },
   { name: 'Facebook', icon: Facebook, url: contacts.social.facebook, color: 'from-blue-600 to-blue-400' },
   { name: 'TikTok', icon: '🎵' as const, url: contacts.social.tiktok, color: 'from-black to-gray-800' },
 ];
@@ -37,7 +37,7 @@ export default function Contacts() {
           >
             <span className="text-6xl">📍</span>
           </motion.div>
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-donut-berry to-donut-chocolate bg-clip-text text-transparent">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-donut-chocolate">
             {t(i18n.contacts.title, locale)}
           </h2>
           <p className="text-xl text-gray-700 max-w-2xl mx-auto">
@@ -70,7 +70,7 @@ export default function Contacts() {
                 }}
                 className="glass-card p-6 rounded-2xl flex items-start gap-4"
               >
-                <div className="w-12 h-12 bg-gradient-to-br from-donut-berry to-donut-pink rounded-xl flex items-center justify-center flex-shrink-0">
+                <div className="w-12 h-12 bg-donut-chocolate rounded-xl flex items-center justify-center flex-shrink-0">
                   <info.icon className="text-white" size={24} />
                 </div>
                 <div>
@@ -133,7 +133,7 @@ export default function Contacts() {
                   transition: { duration: 0.2, delay: 0 },
                 }}
                 whileTap={{ scale: 0.95 }}
-                className="block w-full text-center bg-gradient-to-r from-donut-berry to-donut-pink text-white py-3 rounded-full font-semibold shadow-lg"
+                className="block w-full text-center bg-donut-chocolate text-white py-3 rounded-full font-semibold shadow-lg hover:bg-donut-chocolate/90 transition-all"
               >
                 {t(i18n.contacts.ctaBtn, locale)}
               </motion.a>
@@ -162,7 +162,7 @@ export default function Contacts() {
             />
             {/* 
             Alternative: Custom map placeholder
-            <div className="w-full h-full bg-gradient-to-br from-donut-pink to-donut-peach flex items-center justify-center">
+            <div className="w-full h-full bg-donut-chocolate flex items-center justify-center">
               <div className="text-center">
                 <MapPin size={64} className="mx-auto mb-4 text-white" />
                 <p className="text-white font-bold text-xl">Google Maps</p>

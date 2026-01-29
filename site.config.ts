@@ -444,7 +444,7 @@ export const products: DonutProduct[] = [
     badges: ['new'],
     quantityLabel: { en: '1 pc', ru: '1 шт', ge: '1 ც' },
     price: 7.9,
-    themeGradient: 'from-pink-300 via-rose-200 to-red-200',
+    themeGradient: 'from-amber-200 via-stone-200 to-amber-100',
   },
   {
     id: 'pistachio-donut',

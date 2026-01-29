@@ -3,9 +3,11 @@
 @tailwind utilities;
 
 :root {
-  --gradient-1: linear-gradient(135deg, #FFB4D6 0%, #FFCDB2 100%);
-  --gradient-2: linear-gradient(135deg, #E77597 0%, #FFB4D6 100%);
-  --gradient-3: linear-gradient(135deg, #FFCDB2 0%, #FFF5E1 100%);
+  /* Светло-коричневая палитра (без розового) */
+  --donut-sand: #D4C4B0;
+  --gradient-1: linear-gradient(135deg, #D4C4B0 0%, #E8DCC8 100%);
+  --gradient-2: linear-gradient(135deg, #7D6B4A 0%, #D4C4B0 100%);
+  --gradient-3: linear-gradient(135deg, #E8DCC8 0%, #F7F2EB 100%);
 }
 
 * {
@@ -20,7 +22,7 @@ html {
 
 body {
   overflow-x: hidden;
-  background: linear-gradient(180deg, #FFF5E1 0%, #FFCDB2 50%, #FFB4D6 100%);
+  background: linear-gradient(180deg, #F7F2EB 0%, #E8DCC8 50%, #D4C4B0 100%);
   background-attachment: fixed;
 }
 
@@ -48,7 +50,7 @@ body::before {
 }
 
 .glass-card-dark {
-  background: rgba(139, 94, 60, 0.15);
+  background: rgba(92, 64, 51, 0.15);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.2);
@@ -69,7 +71,7 @@ body::before {
 }
 
 .animated-gradient {
-  background: linear-gradient(-45deg, #FFB4D6, #FFCDB2, #E77597, #FFF5E1);
+  background: linear-gradient(-45deg, #D4C4B0, #E8DCC8, #7D6B4A, #F7F2EB);
   background-size: 400% 400%;
   animation: gradient-shift 15s ease infinite;
 }
@@ -80,16 +82,16 @@ body::before {
 }
 
 ::-webkit-scrollbar-track {
-  background: rgba(255, 245, 225, 0.5);
+  background: rgba(247, 242, 235, 0.5);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #FFB4D6, #E77597);
+  background: linear-gradient(180deg, #D4C4B0, #7D6B4A);
   border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, #E77597, #FFB4D6);
+  background: linear-gradient(180deg, #7D6B4A, #D4C4B0);
 }
 
 /* Sprinkles background */

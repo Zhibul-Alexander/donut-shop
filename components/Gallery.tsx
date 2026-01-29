@@ -27,7 +27,7 @@ export default function Gallery() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-donut-berry to-donut-chocolate bg-clip-text text-transparent">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-donut-chocolate">
             {t(i18n.gallery.title, locale)}
           </h2>
           <p className="text-xl text-gray-700 max-w-2xl mx-auto">

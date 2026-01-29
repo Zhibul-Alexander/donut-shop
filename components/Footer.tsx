@@ -23,7 +23,7 @@ export default function Footer() {
           >
             <div className="flex items-center space-x-2 mb-4">
               <div className="text-4xl">🍩</div>
-              <span className="text-2xl font-bold bg-gradient-to-r from-donut-berry to-donut-chocolate bg-clip-text text-transparent">
+              <span className="text-2xl font-bold text-donut-chocolate">
                 Donut Dreams
               </span>
             </div>
@@ -52,7 +52,7 @@ export default function Footer() {
                 transition={{ type: 'tween', duration: 0.12, delay: 0, ease: 'easeOut' }}
                 className="w-10 h-10 glass-card rounded-lg flex items-center justify-center"
               >
-                <social.icon size={20} className="text-donut-berry" />
+                <social.icon size={20} className="text-donut-chocolate" />
               </motion.a>
             ))}
           </motion.div>
@@ -69,14 +69,14 @@ export default function Footer() {
             © 2026 Donut Dreams. {t(i18n.footer.rights, locale)}
           </p>
           <p className="text-gray-600 text-sm flex items-center gap-2">
-            {t(i18n.footer.madeWith, locale)} <Heart size={16} className="text-donut-berry fill-current" /> {t(i18n.footer.forLovers, locale)}
+            {t(i18n.footer.madeWith, locale)} <Heart size={16} className="text-donut-chocolate fill-current" /> {t(i18n.footer.forLovers, locale)}
           </p>
         </motion.div>
       </div>
 
       {/* Decorative elements */}
       <div className="absolute bottom-0 right-0 opacity-10 pointer-events-none">
-        <div className="w-64 h-64 rounded-full bg-gradient-to-br from-donut-berry to-donut-pink blur-3xl" />
+        <div className="w-64 h-64 rounded-full bg-donut-chocolate/40 blur-3xl" />
       </div>
     </footer>
   );

@@ -20,7 +20,7 @@ export default function ParallaxDonuts() {
         className="absolute top-20 right-10 opacity-20 blur-sm"
       >
         <div className="relative w-32 h-32 md:w-48 md:h-48 animate-spin-slow">
-          <div className="w-full h-full rounded-full bg-gradient-to-br from-donut-pink to-donut-berry opacity-50" />
+          <div className="w-full h-full rounded-full bg-gradient-to-br from-donut-sand to-donut-chocolate opacity-50" />
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="w-12 h-12 md:w-20 md:h-20 rounded-full bg-donut-cream" />
           </div>
@@ -46,7 +46,7 @@ export default function ParallaxDonuts() {
         className="absolute bottom-40 right-20 opacity-10 blur-sm"
       >
         <div className="relative w-36 h-36 md:w-52 md:h-52 animate-spin-slow">
-          <div className="w-full h-full rounded-full bg-gradient-to-br from-donut-berry to-donut-pink opacity-50" />
+          <div className="w-full h-full rounded-full bg-gradient-to-br from-donut-chocolate to-donut-sand opacity-50" />
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="w-14 h-14 md:w-22 md:h-22 rounded-full bg-donut-cream" />
           </div>

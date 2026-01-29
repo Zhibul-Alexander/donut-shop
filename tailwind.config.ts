@@ -9,11 +9,11 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        'donut-pink': '#FFB4D6',
-        'donut-peach': '#FFCDB2',
-        'donut-cream': '#FFF5E1',
-        'donut-chocolate': '#8B5E3C',
-        'donut-berry': '#E77597',
+        'donut-sand': '#D4C4B0',
+        'donut-peach': '#E8DCC8',
+        'donut-cream': '#F7F2EB',
+        'donut-chocolate': '#5C4033',
+        'donut-berry': '#7D6B4A',
       },
       fontFamily: {
         sans: ['var(--font-inter)'],

@@ -59,7 +59,7 @@ export default function Navbar() {
             onClick={() => handleNavClick('home')}
           >
             <div className="text-3xl">🍩</div>
-            <span className="text-2xl font-bold bg-gradient-to-r from-donut-berry to-donut-chocolate bg-clip-text text-transparent">
+            <span className="text-2xl font-bold text-donut-chocolate">
               Donut Dreams
             </span>
           </motion.div>
@@ -74,7 +74,7 @@ export default function Navbar() {
                 transition={{ type: 'tween', duration: 0.12, delay: 0, ease: 'easeOut' }}
                 href={`#${item.id}`}
                 onClick={() => handleNavClick(item.id)}
-                className="text-gray-800 hover:text-donut-berry transition-colors font-medium"
+                className="text-gray-800 hover:text-donut-chocolate transition-colors font-medium"
               >
                 {t(i18n.nav[item.key], locale)}
               </motion.a>
@@ -91,8 +91,8 @@ export default function Navbar() {
                     onClick={() => handleLocaleClick(loc)}
                     className={`px-2 py-1 rounded-md text-sm font-medium transition-colors ${
                       locale === loc
-                        ? 'bg-gradient-to-r from-donut-berry to-donut-pink text-white'
-                        : 'text-gray-600 hover:text-donut-berry'
+                        ? 'bg-donut-chocolate text-white'
+                        : 'text-gray-600 hover:text-donut-chocolate'
                     }`}
                   >
                     {localeLabels[loc]}
@@ -105,7 +105,7 @@ export default function Navbar() {
               whileTap={{ scale: 0.95 }}
               transition={{ type: 'tween', duration: 0.12, delay: 0, ease: 'easeOut' }}
               onClick={() => handleNavClick('delivery')}
-              className="bg-gradient-to-r from-donut-berry to-donut-pink text-white px-6 py-2 rounded-full font-semibold shadow-lg"
+              className="bg-donut-chocolate text-white px-6 py-2 rounded-full font-semibold shadow-lg hover:bg-donut-chocolate/90 transition-all"
             >
               {t(i18n.nav.orderNow, locale)}
             </motion.button>
@@ -146,7 +146,7 @@ export default function Navbar() {
                   whileTap={{ scale: 0.96 }}
                   href={`#${item.id}`}
                   onClick={() => handleNavClick(item.id)}
-                  className="block w-full text-left text-gray-800 hover:text-donut-berry transition-colors font-medium py-2"
+                  className="block w-full text-left text-gray-800 hover:text-donut-chocolate transition-colors font-medium py-2"
                 >
                   {t(i18n.nav[item.key], locale)}
                 </motion.a>
@@ -167,7 +167,7 @@ export default function Navbar() {
                       onClick={() => handleLocaleClick(loc)}
                       className={`flex-1 py-2 rounded-full text-sm font-medium ${
                         locale === loc
-                          ? 'bg-gradient-to-r from-donut-berry to-donut-pink text-white'
+                          ? 'bg-donut-chocolate text-white'
                           : 'glass-card text-gray-600'
                       }`}
                     >
@@ -183,7 +183,7 @@ export default function Navbar() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => handleNavClick('delivery')}
-                className="w-full bg-gradient-to-r from-donut-berry to-donut-pink text-white px-6 py-3 rounded-full font-semibold shadow-lg"
+                className="w-full bg-donut-chocolate text-white px-6 py-3 rounded-full font-semibold shadow-lg hover:bg-donut-chocolate/90 transition-all"
               >
                 {t(i18n.nav.orderNow, locale)}
               </motion.button>

@@ -25,7 +25,7 @@ const item = {
 const getBadgeColor = (badge?: string) => {
   switch (badge) {
     case 'hit':
-      return 'bg-gradient-to-r from-red-500 to-pink-500';
+      return 'bg-gradient-to-r from-amber-700 to-amber-500';
     case 'new':
       return 'bg-gradient-to-r from-green-500 to-emerald-500';
     case 'sugar-free':
@@ -65,7 +65,7 @@ export default function Products() {
           >
             <span className="text-6xl">🍩</span>
           </motion.div>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 bg-gradient-to-r from-donut-berry to-donut-chocolate bg-clip-text text-transparent">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-donut-chocolate">
             {t(i18n.products.title, locale)}
           </h2>
           <p className="text-xl text-gray-700 max-w-2xl mx-auto">
@@ -111,7 +111,7 @@ export default function Products() {
 
               <div className="p-6">
                 <div className="flex items-start justify-between mb-3">
-                  <h3 className="text-2xl font-bold text-gray-800 group-hover:text-donut-berry transition-colors">
+                  <h3 className="text-2xl font-bold text-gray-800 group-hover:text-donut-chocolate transition-colors">
                     {t((i18n.products.items as Record<string, { title: Record<Locale, string> }>)[donut.id]?.title ?? { en: '', ru: '', ge: '' }, locale)}
                   </h3>
                   <div className="flex items-center text-yellow-500">
@@ -128,7 +128,7 @@ export default function Products() {
                   <span className="text-sm text-gray-500 glass-card px-3 py-1 rounded-full">
                     {t(donut.quantityLabel, locale)}
                   </span>
-                  <span className="text-2xl font-bold text-donut-berry">
+                  <span className="text-2xl font-bold text-donut-chocolate">
                     {donut.price} GEL
                   </span>
                 </div>
@@ -140,7 +140,7 @@ export default function Products() {
                   }}
                   whileTap={{ scale: 0.95 }}
                   onClick={() => scrollToSection('delivery')}
-                  className="w-full bg-gradient-to-r from-donut-berry to-donut-pink text-white py-3 rounded-full font-semibold flex items-center justify-center gap-2 shadow-lg"
+                  className="w-full bg-donut-chocolate text-white py-3 rounded-full font-semibold flex items-center justify-center gap-2 shadow-lg hover:bg-donut-chocolate/90 transition-all"
                 >
                   <ShoppingCart size={20} />
                   {t(i18n.products.orderBtn, locale)}
