@@ -129,9 +129,6 @@ export default function Hero() {
                   />
                 </motion.div>
               </div>
-
-              {/* Glow effect */}
-              <div className="absolute inset-0 rounded-full bg-donut-chocolate opacity-25 blur-3xl animate-pulse" />
             </motion.div>
           </motion.div>
         </div>
