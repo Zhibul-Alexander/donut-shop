@@ -77,7 +77,7 @@ export const i18n = {
     stats: {
       natural: { en: 'Natural', ru: 'Натуральные', ge: 'ნატურალური' },
       delivery: { en: '30 min', ru: '30 мин', ge: '30 წთ' },
-      flavors: { en: 'Flavors', ru: 'Вкусов', ge: 'გემო' },
+      flavors: { en: 'Flavors', ru: 'Вкусов', ge: 'გემოები' },
     },
   },
 
@@ -227,11 +227,11 @@ export const i18n = {
     },
     stats: {
       customersValue: { en: '50K+', ru: '50K+', ge: '50K+' },
-      customersLabel: { en: 'Happy Customers', ru: 'Довольных клиентов', ge: 'კმაყოფილი მომხმარებელი' },
+      customersLabel: { en: 'Happy Customers', ru: 'Довольных клиентов', ge: 'კმაყოფილი მომხმარებლები' },
       years: { en: '4 Years', ru: '4 года', ge: '4 წელი' },
       yearsLabel: { en: 'On the market', ru: 'На рынке', ge: 'ბაზარზე' },
       flavorsValue: { en: '5+', ru: '5+', ge: '5+' },
-      flavorsLabel: { en: 'Unique Flavors', ru: 'Уникальных вкусов', ge: 'უნიკალური გემო' },
+      flavorsLabel: { en: 'Unique Flavors', ru: 'Уникальных вкусов', ge: 'უნიკალური გემოები' },
       naturalValue: { en: '100%', ru: '100%', ge: '100%' },
       naturalLabel: { en: 'Natural', ru: 'Натуральные', ge: 'ნატურალური' },
     },
@@ -259,10 +259,48 @@ export const i18n = {
       ge: 'ჩვენი სტუმრების გამოხმაურებები',
     },
     subtitle: {
-      en: 'Over 10,000 happy customers have already tried our donuts',
-      ru: 'Более 10,000 довольных клиентов уже попробовали наши пончики',
-      ge: '10,000-ზე მეტი კმაყოფილი მომხმარებელი უკვე სცადა ჩვენი დონატები',
+      en: 'Over 50,000 happy customers have already tried our donuts',
+      ru: 'Более 50,000 довольных клиентов уже попробовали наши пончики',
+      ge: '50,000-ზე მეტი კმაყოფილი მომხმარებელი უკვე სცადა ჩვენი დონატები',
     },
+    items: [
+      {
+        name: { en: 'Anna K.', ru: 'Анна К.', ge: 'ანა კ.' },
+        text: {
+          en: 'The best donuts in town! Always fresh, incredibly delicious.',
+          ru: 'Лучшие пончики в городе! Всегда свежие, невероятно вкусные.',
+          ge: 'საუკეთესო დონატები ქალაქში! ყოველთვის ახალი, წარმოუდგენლად გემრიელი.',
+        },
+        rating: 5,
+      },
+      {
+        name: { en: 'Mikhail P.', ru: 'Михаил П.', ge: 'მიხეილ პ.' },
+        text: {
+          en: 'I order every week for the office. Colleagues love them! Fast delivery, neat packaging. Recommend!',
+          ru: 'Заказываю каждую неделю на работу. Коллеги в восторге! Доставка быстрая, упаковка аккуратная. Рекомендую!',
+          ge: 'შევუკვეთავ ყოველ კვირას სამუშაოდ. კოლეგები ხარობენ! სწრაფი მიწოდება, მოწესრიგებული შეფუთვა. გირჩევთ!',
+        },
+        rating: 5,
+      },
+      {
+        name: { en: 'Elena S.', ru: 'Елена С.', ge: 'ელენა ს.' },
+        text: {
+          en: 'Very tasty donuts, tender and fresh. Pleasantly surprised by the quality and variety.',
+          ru: 'Очень вкусные пончики, нежные и свежие. Приятно удивило качество и разнообразие выбора.',
+          ge: 'ძალიან გემრიელი დონატები, ნაზი და ახალი. სასიამოვნოდ გაოცდა ხარისხმა და მრავალფეროვნებამ.',
+        },
+        rating: 5,
+      },
+      {
+        name: { en: 'Dmitry V.', ru: 'Дмитрий В.', ge: 'დიმიტრი ვ.' },
+        text: {
+          en: 'Great quality and reasonable prices. Donuts are really fresh every day. Will order again!',
+          ru: 'Отличное качество и разумные цены. Пончики действительно свежие каждый день. Буду заказывать ещё!',
+          ge: 'შესანიშნავი ხარისხი და გონივრული ფასები. დონატები ნამდვილად ახალია ყოველ დღე. ისევ შევუკვეთავ!',
+        },
+        rating: 5,
+      },
+    ],
   },
 
   // DELIVERY SECTION
@@ -406,7 +444,7 @@ export const i18n = {
       payment: { en: 'Payment', ru: 'Оплата', ge: 'გადახდა' },
       careers: { en: 'Careers', ru: 'Вакансии', ge: 'ვაკანსიები' },
       partners: { en: 'Partners', ru: 'Партнёрам', ge: 'პარტნიორებს' },
-      faq: { en: 'FAQ', ru: 'FAQ', ge: 'ხშირი კითხვები' },
+      faq: { en: 'FAQ', ru: 'Частые вопросы', ge: 'ხშირი კითხვები' },
       privacy: { en: 'Privacy Policy', ru: 'Политика конфиденциальности', ge: 'კონფიდენციალურობის პოლიტიკა' },
       terms: { en: 'Terms of Use', ru: 'Условия использования', ge: 'გამოყენების პირობები' },
       refund: { en: 'Refund', ru: 'Возврат', ge: 'დაბრუნება' },
@@ -500,7 +538,7 @@ export const contacts = {
     ru: 'ул. Пончиковая, 42, Тбилиси',
     ge: 'დონატის ქუჩა 42, თბილისი',
   },
-  phone: '+995 555 123 456',
+  phone: '+995 551 532 661',
   email: 'hello@donutdreams.ge',
   hours: {
     en: 'Mon-Sun: 08:00 - 22:00',
@@ -512,7 +550,7 @@ export const contacts = {
     facebook: 'https://facebook.com/donutdreams',
     tiktok: 'https://tiktok.com/@donutdreams',
   },
-  whatsapp: 'https://wa.me/995555123456',
+  whatsapp: 'https://wa.me/995551532661',
   telegram: 'https://t.me/donutdreams',
 };
 

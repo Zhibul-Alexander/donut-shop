@@ -2,7 +2,6 @@
 
 import { motion } from 'framer-motion';
 import { Star, Quote } from 'lucide-react';
-import { reviews } from '@/data/donuts';
 import { useLocale, t } from '@/hooks/useLocale';
 import { i18n } from '@/site.config';
 
@@ -57,11 +56,10 @@ export default function Reviews() {
           viewport={{ once: true }}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
         >
-          {reviews.map((review) => (
+          {i18n.reviews.items.map((review, index) => (
             <motion.div
-              key={review.id}
+              key={index}
               variants={item}
-              // Ховер — сразу, без задержки (отдельный transition от анимации появления)
               whileHover={{
                 y: -10,
                 scale: 1.02,
@@ -73,10 +71,10 @@ export default function Reviews() {
               
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-12 h-12 rounded-full bg-donut-chocolate flex items-center justify-center text-white font-bold text-xl">
-                  {review.name.charAt(0)}
+                  {t(review.name, locale).charAt(0)}
                 </div>
                 <div>
-                  <h4 className="font-bold text-gray-800">{review.name}</h4>
+                  <h4 className="font-bold text-gray-800">{t(review.name, locale)}</h4>
                   <div className="flex gap-1">
                     {[...Array(review.rating)].map((_, i) => (
                       <Star key={i} size={14} fill="#FFB800" className="text-yellow-500" />
@@ -85,7 +83,7 @@ export default function Reviews() {
                 </div>
               </div>
 
-              <p className="text-gray-600 italic relative z-10">{review.text}</p>
+              <p className="text-gray-600 italic relative z-10">{t(review.text, locale)}</p>
             </motion.div>
           ))}
         </motion.div>
