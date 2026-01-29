@@ -1,5 +1,6 @@
 'use client';
 
+import { useCallback, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 
 /*
@@ -7,6 +8,10 @@ import { motion } from 'framer-motion';
  * Размер пончика макс ~8% ширины экрана — зазоры достаточные.
  */
 const LEFT_SLOTS = ['4%', '18%', '32%', '46%', '60%', '74%', '88%'] as const;
+
+const TOTAL_DONUTS = 14;
+const FIRST_ITERATION_COUNT = Math.ceil(TOTAL_DONUTS / 3); // треть пончиков при первом срабатывании
+const SECOND_ITERATION_COUNT = Math.ceil((TOTAL_DONUTS * 2) / 3); // 2/3 со второй итерации
 
 /* Детерминированный «рандом»: индексы слотов и задержки перемешаны для визуально случайного вида */
 const SLOT_ORDER = [0, 4, 1, 5, 2, 6, 3, 0, 4, 1, 5, 2, 4, 6];
@@ -58,10 +63,39 @@ function DonutRing({ gradient, sizeClass }: { gradient: string; sizeClass: strin
 const Y_START = '-12vh';
 const Y_END = '112vh';
 
+function getVisibleCount(iteration: number): number {
+  if (iteration <= 0) return FIRST_ITERATION_COUNT;
+  if (iteration === 1) return SECOND_ITERATION_COUNT;
+  return TOTAL_DONUTS;
+}
+
 export default function ParallaxDonuts() {
+  const [iteration, setIteration] = useState(0);
+  const completedRef = useRef<Set<number>>(new Set());
+
+  const visibleCount = getVisibleCount(iteration);
+
+  const onCycleComplete = useCallback(
+    (i: number) => {
+      if (iteration >= 2) return;
+
+      const prevCount = iteration === 0 ? 0 : FIRST_ITERATION_COUNT;
+      const newInThisIteration = iteration === 0 ? FIRST_ITERATION_COUNT : SECOND_ITERATION_COUNT - FIRST_ITERATION_COUNT;
+
+      if (i < prevCount || i >= prevCount + newInThisIteration) return;
+
+      completedRef.current.add(i);
+      if (completedRef.current.size >= newInThisIteration) {
+        completedRef.current.clear();
+        setIteration((prev) => Math.min(prev + 1, 2));
+      }
+    },
+    [iteration]
+  );
+
   return (
     <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
-      {FALLING_DONUTS.map((donut, i) => (
+      {FALLING_DONUTS.slice(0, visibleCount).map((donut, i) => (
         <motion.div
           key={i}
           className="absolute top-0 left-0 opacity-[0.18] blur-[2px] will-change-transform"
@@ -96,6 +130,7 @@ export default function ParallaxDonuts() {
             },
             delay: DELAYS[i],
           }}
+          onAnimationComplete={() => onCycleComplete(i)}
         >
           <DonutRing
             gradient={GRADIENTS[i % GRADIENTS.length]}
