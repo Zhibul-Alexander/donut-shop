@@ -8,7 +8,7 @@ import {
   useCallback,
   type ReactNode,
 } from 'react';
-import { Locale, defaultLocale, locales } from '@/site.config';
+import { Locale, defaultLocale, locales, seo } from '@/site.config';
 
 type LocaleContextValue = {
   locale: Locale;
@@ -30,10 +30,11 @@ export function LocaleProvider({ children }: { children: ReactNode }) {
     }
   }, []);
 
-  // Обновляем атрибут lang на <html> при смене языка
+  // Обновляем атрибут lang и заголовок вкладки при смене языка
   useEffect(() => {
     if (typeof document !== 'undefined') {
       document.documentElement.lang = locale;
+      document.title = seo.title[locale];
     }
   }, [locale]);
 

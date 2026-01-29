@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Plus_Jakarta_Sans } from "next/font/google";
+import { defaultLocale, seo } from "@/site.config";
 import "./globals.css";
 
 const inter = Inter({ 
@@ -15,15 +16,15 @@ const jakarta = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Donut Dreams — Свежие пончики каждый день",
-  description: "Магазин свежих пончиков с доставкой. Натуральные ингредиенты, уникальные вкусы, доставка за 45 минут.",
-  keywords: "пончики, донатс, десерты, доставка, свежая выпечка",
+  title: seo.title[defaultLocale],
+  description: seo.description[defaultLocale],
+  keywords: seo.keywords[defaultLocale],
   icons: {
     icon: "/logo.webp",
   },
   openGraph: {
-    title: "Donut Dreams — Свежие пончики каждый день",
-    description: "Магазин свежих пончиков с доставкой",
+    title: seo.title[defaultLocale],
+    description: seo.description[defaultLocale],
     type: "website",
   },
 };
