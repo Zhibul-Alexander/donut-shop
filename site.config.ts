@@ -33,7 +33,7 @@ export const brand = {
   emoji: '🍩',
 };
 
-export const locales: Locale[] = ['en', 'ru', 'ge'];
+export const locales: Locale[] = ['en', 'ge', 'ru'];
 export const defaultLocale: Locale = 'en';
 
 // ============================================================================
