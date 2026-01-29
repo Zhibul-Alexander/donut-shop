@@ -52,7 +52,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} ${jakarta.variable}`} suppressHydrationWarning>
-      <body className={inter.className}>
+      <body className={inter.className} style={{ backgroundColor: '#F7F2EB' }}>
         {children}
       </body>
     </html>
