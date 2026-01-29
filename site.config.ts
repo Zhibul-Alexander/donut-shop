@@ -18,6 +18,11 @@ export interface DonutProduct {
 // BRAND & LOCALES
 // ============================================================================
 
+/** Base URL for sitemap/robots (set SITE_URL or NEXT_PUBLIC_SITE_URL in env) */
+export const siteUrl =
+  (typeof process !== 'undefined' && (process.env.SITE_URL ?? process.env.NEXT_PUBLIC_SITE_URL)) ||
+  'https://donut-dreams.pages.dev';
+
 export const brand = {
   name: 'Donut Dreams',
   tagline: {
