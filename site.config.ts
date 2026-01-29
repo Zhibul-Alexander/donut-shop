@@ -580,9 +580,9 @@ export const seo = {
     ge: 'Donut Dreams — პრემიუმ ხელნაკეთი დონატები თბილისში',
   },
   description: {
-    en: 'Premium handcrafted donuts with natural ingredients. Fresh daily. Delivery in 45 minutes. Order now!',
-    ru: 'Премиальные пончики ручной работы из натуральных ингредиентов. Свежие каждый день. Доставка за 45 минут. Заказать!',
-    ge: 'პრემიუმ ხელნაკეთი დონატები ნატურალური ინგრედიენტებით. ახალი ყოველდღე. მიწოდება 45 წუთში. შეუკვეთეთ!',
+    en: 'Premium handcrafted donuts, natural ingredients, fresh daily. Delivery in Tbilisi.',
+    ru: 'Премиальные пончики из натуральных ингредиентов. Свежие каждый день. Доставка по Тбилиси.',
+    ge: 'პრემიუმ ხელნაკეთი დონატები ნატურალური ინგრედიენტებით. ახალი ყოველდღე. მიწოდება თბილისში.',
   },
   ogImage: '/og-image.jpg',
   keywords: {
